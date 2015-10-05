@@ -4,19 +4,17 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
-	
 	public static final int MIN_TEMPERATURE = -273;
 	
 	private double[] tempSeries;
 	private int curLength;
 	
-    public TemperatureSeriesAnalysis() {
-        tempSeries = new double [0];
+	public TemperatureSeriesAnalysis() {
+		tempSeries = new double [0];
 		curLength = 0;
-    }
-    
-    public TemperatureSeriesAnalysis(double[] newTempSeries) {
-        boolean withinTheRange = true;
+	}
+	public TemperatureSeriesAnalysis(double[] newTempSeries) {
+		boolean withinTheRange = true;
 		for (double t : newTempSeries) {
 			if (t < MIN_TEMPERATURE) {
 				withinTheRange = false;
@@ -29,9 +27,9 @@ public class TemperatureSeriesAnalysis {
 		/*else {
 			throw new InputMismatchException();
 		}*/
-    }
-    
-    public double average() {   
+		}
+		
+	public double average() {   
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
@@ -39,8 +37,8 @@ public class TemperatureSeriesAnalysis {
 		for (int i = 0; i < curLength; i++) {
 			sum += tempSeries[i];
 		}
-        return sum / curLength;
-    }    
+		return sum / curLength;
+	}
     
     public double deviation() {
 		if (tempSeries.length == 0) {
@@ -52,10 +50,10 @@ public class TemperatureSeriesAnalysis {
 		}
 		res *= 1.0 / ((double) curLength);
 		res = sqrt(res);
-        return res;
-    }
-    
-    public double min() {
+		return res;
+	}
+	
+	public double min() {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
@@ -65,10 +63,10 @@ public class TemperatureSeriesAnalysis {
 				curMin = tempSeries[i];
 			}
 		}
-        return curMin;
-    }
-     
-    public double max() {
+		return curMin;
+	}
+
+	public double max() {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
@@ -78,18 +76,18 @@ public class TemperatureSeriesAnalysis {
 				curMax = tempSeries[i];
 			}
 		}
-        return curMax;
-    }
-    
-    public double findTempClosestToZero() {
+		return curMax;
+	}
+	
+	public double findTempClosestToZero() {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-        return findTempClosestToValue(0.0);
-    }
-    
-    public double findTempClosestToValue(double tempValue) {
-        if (tempSeries.length == 0) {
+		return findTempClosestToValue(0.0);
+	}
+	
+	public double findTempClosestToValue(double tempValue) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
 		double minAbs = abs(tempSeries[0] - tempValue);
@@ -101,10 +99,10 @@ public class TemperatureSeriesAnalysis {
 				res = tempSeries[i];
 			}
 		}
-        return res;
+		return res;
 	}
-    
-    public double[] findTempsLessThen(double tempValue) {
+	
+	public double[] findTempsLessThen(double tempValue) {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
@@ -122,14 +120,14 @@ public class TemperatureSeriesAnalysis {
 				curResLength++;
 			}
 		}
-        return res;
-    }
-    
-    public double[] findTempsGreaterThen(double tempValue) {
+		return res;
+	}
+	
+	public double[] findTempsGreaterThen(double tempValue) {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-        int maxLength = 0;
+		int maxLength = 0;
 		for (int i = 1; i < curLength; i++) {
 			if (tempSeries[i] > tempValue) {
 				maxLength++;
@@ -143,18 +141,19 @@ public class TemperatureSeriesAnalysis {
 				curResLength++;
 			}
 		}
-        return res;
-    }
-    
-    public TempSummaryStatistics summaryStatistics() {
+		return res;
+	}
+	
+	public TempSummaryStatistics summaryStatistics() {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		TempSummaryStatistics res = new TempSummaryStatistics(average(), deviation(), min(), max());
-        return res;
-    }
-    
-    public int addTemps(double ... temps) {
-        return 0;
-    }
+		TempSummaryStatistics res = new TempSummaryStatistics();
+		res.set(average(), deviation(), min(), max());
+		return res;
+	}
+	
+	public int addTemps(double ... temps) {
+		return 0;
+	}
 }
