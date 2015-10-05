@@ -4,11 +4,10 @@ import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
-	public static final int MIN_TEMPERATURE = -273;
-	
-	private double[] tempSeries;
-	private int curLength;
-	
+public static final int MIN_TEMPERATURE = -273;
+private double[] tempSeries;
+private int curLength;
+
 	public TemperatureSeriesAnalysis() {
 		tempSeries = new double [0];
 		curLength = 0;
@@ -21,7 +20,7 @@ public class TemperatureSeriesAnalysis {
 			}
 		}
 		if (withinTheRange) {
-			tempSeries = (double[])newTempSeries.clone();
+			tempSeries = (double[]) newTempSeries.clone();
 			curLength = tempSeries.length;
 		}
 		else {
@@ -94,8 +93,8 @@ public class TemperatureSeriesAnalysis {
 		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
 			double curAbs = abs(tempSeries[i] - tempValue);
-			if (minAbs > curAbs ||
-			minAbs == curAbs && tempSeries[i] >= 0) {
+			if (minAbs > curAbs 
+			|| minAbs == curAbs && tempSeries[i] >= 0) {
 				minAbs = curAbs;
 				res = tempSeries[i];
 			}
