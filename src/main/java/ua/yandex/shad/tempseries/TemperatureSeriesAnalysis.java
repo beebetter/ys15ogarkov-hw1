@@ -25,6 +25,10 @@ public class TemperatureSeriesAnalysis {
     public double average() {   
 		if (temperatureSeries.length == 0)
 			throw new IllegalArgumentException();
+		double sum = 0;
+		for (double t : temperatureSeries) {
+			sum += t;
+		}
         return 0;
     }    
     
