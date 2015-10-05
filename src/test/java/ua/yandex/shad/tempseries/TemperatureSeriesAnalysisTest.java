@@ -7,7 +7,7 @@ public class TemperatureSeriesAnalysisTest {
     
     @Test
     public void testAverage() {
-        double[] temperatureSeries = {1.0, -5.0, 1.0, 5.0};
+        double[] temperatureSeries = {1.0, -5.0, -1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 0.0;
         double actualResult = seriesAnalysis.average();
@@ -29,6 +29,16 @@ public class TemperatureSeriesAnalysisTest {
 		seriesAnalysis.average();   
 		//fail("Fail first time");
 		
+    }
+	@Test
+    public void testAverage2() {
+        double[] temperatureSeries = {1.0, 2.0, 3.0, 4.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 2.5;
+        double actualResult = seriesAnalysis.average();
+        
+        assertEquals(expResult, actualResult, 0.00001);
+        
     }
 	@Test(expected = IllegalArgumentException.class)
     public void testDeviationFailOnEmptyList() {

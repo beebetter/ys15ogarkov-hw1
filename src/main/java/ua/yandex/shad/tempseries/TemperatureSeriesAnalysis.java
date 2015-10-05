@@ -5,6 +5,7 @@ public class TemperatureSeriesAnalysis {
 
 	public static final int MIN_TEMPERATURE = -273;
 	private double[] temperatureSeries;
+	private int curLength;
 	
     public TemperatureSeriesAnalysis() {
         
@@ -18,6 +19,7 @@ public class TemperatureSeriesAnalysis {
 		}
 		if (withinTheRange) {
 			temperatureSeries = (double[])tempSeries.clone();
+			curLength = temperatureSeries.length;
 		}
 				//else throw new InputMismatchException();
     }
@@ -26,10 +28,10 @@ public class TemperatureSeriesAnalysis {
 		if (temperatureSeries.length == 0)
 			throw new IllegalArgumentException();
 		double sum = 0;
-		for (double t : temperatureSeries) {
-			sum += t;
+		for (int i = 0; i < curLength; i++) {
+			sum += temperatureSeries[i];
 		}
-        return 0;
+        return sum / curLength;
     }    
     
     public double deviation() {
