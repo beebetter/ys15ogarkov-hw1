@@ -24,9 +24,9 @@ public class TemperatureSeriesAnalysis {
 			tempSeries = (double[])newTempSeries.clone();
 			curLength = tempSeries.length;
 		}
-		/*else {
+		else {
 			throw new InputMismatchException();
-		}*/
+		}
 		}
 		
 	public double average() {   
@@ -94,7 +94,8 @@ public class TemperatureSeriesAnalysis {
 		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
 			double curAbs = abs(tempSeries[i] - tempValue);
-			if (minAbs > curAbs || minAbs == curAbs && tempSeries[i] >= 0) {
+			if (minAbs > curAbs ||
+			minAbs == curAbs && tempSeries[i] >= 0) {
 				minAbs = curAbs;
 				res = tempSeries[i];
 			}
@@ -107,14 +108,14 @@ public class TemperatureSeriesAnalysis {
 			throw new IllegalArgumentException();
 		}
 		int maxLength = 0;
-		for (int i = 1; i < curLength; i++) {
+		for (int i = 0; i < curLength; i++) {
 			if (tempSeries[i] < tempValue) {
 				maxLength++;
 			}
 		}
 		double[] res = new double [maxLength];
 		int curResLength = 0;
-		for (int i = 1; i < curLength; i++) {
+		for (int i = 0; i < curLength; i++) {
 			if (tempSeries[i] < tempValue) {
 				res[curResLength] = tempSeries[i];
 				curResLength++;
@@ -128,15 +129,15 @@ public class TemperatureSeriesAnalysis {
 			throw new IllegalArgumentException();
 		}
 		int maxLength = 0;
-		for (int i = 1; i < curLength; i++) {
+		for (int i = 0; i < curLength; i++) {
 			if (tempSeries[i] > tempValue) {
 				maxLength++;
 			}
 		}
 		double[] res = new double [maxLength];
 		int curResLength = 0;
-		for (int i = 1; i < curLength; i++) {
-			if (tempSeries[i] < tempValue) {
+		for (int i = 0; i < curLength; i++) {
+			if (tempSeries[i] > tempValue) {
 				res[curResLength] = tempSeries[i];
 				curResLength++;
 			}

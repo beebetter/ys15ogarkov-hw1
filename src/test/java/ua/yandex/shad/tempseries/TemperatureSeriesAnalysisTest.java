@@ -2,6 +2,7 @@ package ua.yandex.shad.tempseries;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
+import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
     
@@ -169,6 +170,15 @@ public class TemperatureSeriesAnalysisTest {
 		seriesAnalysis.findTempsGreaterThen(10);   
     }
 	
+	@Test
+    public void testFindTempsGreaterThen() {
+        double[] temperatureSeries = {5.0, -2.0, 3.0, 2.0, -4.0, 1.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double[] expResult = {5.0, 3.0, 2.0};
+        double[] actualResult = seriesAnalysis.findTempsGreaterThen(1.0);        
+        assertArrayEquals(expResult, actualResult, 0.00001);        
+    }
+	
 	@Test(expected = IllegalArgumentException.class)
     public void testSummaryStatisticsFailOnEmptyList() {
         double[] temperatureSeries = {};
@@ -176,11 +186,22 @@ public class TemperatureSeriesAnalysisTest {
 		seriesAnalysis.summaryStatistics();   
     }
 	
-	/*@Test(expected = InputMismatchException.class)
+	@Test
+    public void testSummaryStatistics() {
+        double[] temperatureSeries = {6.0, 8.0, 6.0, 8.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        TempSummaryStatistics expResult = new TempSummaryStatistics();
+		expResult.set(7.0, 1.0, 6.0, 8.0);
+        TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
+        assertTrue(expResult.avgTemp == actualResult.avgTemp && expResult.devTemp == actualResult.devTemp
+		&& expResult.minTemp == actualResult.minTemp && expResult.maxTemp == actualResult.maxTemp);       
+    }
+	
+	@Test(expected = InputMismatchException.class)
 	//@Test(expected = IllegalArgumentException.class)
     public void testTemperatureSeriesAnalysisFailWhenOutOfRange() {
         double[] temperatureSeries = {0.0, -274.0, -272.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);        
     }
-    */
+    
 }
