@@ -1,5 +1,6 @@
 package ua.yandex.shad.tempseries;
-
+import static java.lang.Math.pow;
+import static java.lang.Math.sqrt;
 //import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
 
@@ -14,8 +15,9 @@ public class TemperatureSeriesAnalysis {
     public TemperatureSeriesAnalysis(double[] tempSeries) {
         boolean withinTheRange = true;
 		for (double t : tempSeries) {
-			if (t < MIN_TEMPERATURE)
+			if (t < MIN_TEMPERATURE) {
 				withinTheRange = false;
+			}
 		}
 		if (withinTheRange) {
 			temperatureSeries = (double[])tempSeries.clone();
@@ -25,8 +27,9 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double average() {   
-		if (temperatureSeries.length == 0)
+		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
+		}
 		double sum = 0;
 		for (int i = 0; i < curLength; i++) {
 			sum += temperatureSeries[i];
@@ -35,20 +38,29 @@ public class TemperatureSeriesAnalysis {
     }    
     
     public double deviation() {
-		if (temperatureSeries.length == 0)
+		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
-        return 0;
+		}
+		double res = 0, avg = average();
+		for (int i = 0; i < curLength; i++) {
+			res += pow(temperatureSeries[i] - avg, 2);
+		}
+		res *= 1.0 / ((double) curLength);
+		res = sqrt(res);
+        return res;
     }
     
     public double min() {
-		if (temperatureSeries.length == 0)
+		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
+		}
         return 0;
     }
      
     public double max() {
-		if (temperatureSeries.length == 0)
+		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
+		}
         return 0;
     }
     
