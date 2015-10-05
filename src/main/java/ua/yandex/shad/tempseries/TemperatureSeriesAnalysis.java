@@ -3,48 +3,48 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 //import java.util.InputMismatchException;
-public class TemperatureSeriesAnalysis {    
+public class tempSeriesAnalysis {    
 
 	public static final int MIN_TEMPERATURE = -273;
-	private double[] temperatureSeries;
+	private double[] tempSeries;
 	private int curLength;
 	
-    public TemperatureSeriesAnalysis() {
+    public tempSeriesAnalysis() {
         
     }
     
-    public TemperatureSeriesAnalysis(double[] tempSeries) {
+    public tempSeriesAnalysis(double[] newTempSeries) {
         boolean withinTheRange = true;
-		for (double t : tempSeries) {
+		for (double t : newTempSeries) {
 			if (t < MIN_TEMPERATURE) {
 				withinTheRange = false;
 			}
 		}
 		if (withinTheRange) {
-			temperatureSeries = (double[])tempSeries.clone();
-			curLength = temperatureSeries.length;
+			tempSeries = (double[])newTempSeries.clone();
+			curLength = tempSeries.length;
 		}
 				//else throw new InputMismatchException();
     }
     
     public double average() {   
-		if (temperatureSeries.length == 0) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
 		double sum = 0;
 		for (int i = 0; i < curLength; i++) {
-			sum += temperatureSeries[i];
+			sum += tempSeries[i];
 		}
         return sum / curLength;
     }    
     
     public double deviation() {
-		if (temperatureSeries.length == 0) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
 		double res = 0, avg = average();
 		for (int i = 0; i < curLength; i++) {
-			res += pow(temperatureSeries[i] - avg, 2);
+			res += pow(tempSeries[i] - avg, 2);
 		}
 		res *= 1.0 / ((double) curLength);
 		res = sqrt(res);
@@ -52,56 +52,57 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double min() {
-		if (temperatureSeries.length == 0) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double curMin = temperatureSeries[0];
+		double curMin = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
-			if (curMin > temperatureSeries[i]) {
-				curMin = temperatureSeries[i];
+			if (curMin > tempSeries[i]) {
+				curMin = tempSeries[i];
 			}
 		}
         return curMin;
     }
      
     public double max() {
-		if (temperatureSeries.length == 0) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double curMax = temperatureSeries[0];
+		double curMax = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
-			if (curMax < temperatureSeries[i]) {
-				curMax = temperatureSeries[i];
+			if (curMax < tempSeries[i]) {
+				curMax = tempSeries[i];
 			}
 		}
         return curMax;
     }
     
     public double findTempClosestToZero() {
-		if (temperatureSeries.length == 0) {
+		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double minAbs = abs(temperatureSeries[0]);
-		double res = temperatureSeries[0];
+		double minAbs = abs(tempSeries[0]);
+		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
-			if (minAbs > abs(temperatureSeries[i]) || minAbs == temperatureSeries[i]) {
-				minAbs = abs(temperatureSeries[i]);
-				res = temperatureSeries[i];
+			if (minAbs > abs(tempSeries[i]) || minAbs == tempSeries[i]) {
+				minAbs = abs(tempSeries[i]);
+				res = tempSeries[i];
 			}
 		}
         return res;
     }
     
     public double findTempClosestToValue(double tempValue) {
-        if (temperatureSeries.length == 0) {
+        if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double minAbs = abs(temperatureSeries[0] - tempValue);
-		double res = temperatureSeries[0];
+		double minAbs = abs(tempSeries[0] - tempValue);
+		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
-			if (minAbs > abs(temperatureSeries[i] - tempValue) || minAbs == abs(temperatureSeries[i] - tempValue) && temperatureSeries[i] >= 0 ) {
-				minAbs = abs(temperatureSeries[i] - tempValue);
-				res = temperatureSeries[i];
+			double curAbs = abs(tempSeries[i] - tempValue);
+			if (minAbs > curAbs || minAbs == curAbs && tempSeries[i] >= 0) {
+				minAbs = curAbs;
+				res = tempSeries[i];
 			}
 		}
         return res;
