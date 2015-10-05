@@ -54,14 +54,26 @@ public class TemperatureSeriesAnalysis {
 		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-        return 0;
+		double curMin = temperatureSeries[0];
+		for (int i = 1; i < curLength; i++) {
+			if (curMin > temperatureSeries[i]) {
+				curMin = temperatureSeries[i];
+			}
+		}
+        return curMin;
     }
      
     public double max() {
 		if (temperatureSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-        return 0;
+		double curMax = temperatureSeries[0];
+		for (int i = 1; i < curLength; i++) {
+			if (curMax < temperatureSeries[i]) {
+				curMax = temperatureSeries[i];
+			}
+		}
+        return curMax;
     }
     
     public double findTempClosestToZero() {

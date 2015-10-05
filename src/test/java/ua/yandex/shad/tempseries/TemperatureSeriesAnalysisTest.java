@@ -62,8 +62,22 @@ public class TemperatureSeriesAnalysisTest {
         double[] temperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
 		seriesAnalysis.min();   
-		//fail("Fail first time");
-		
+    }
+	@Test
+    public void testMin() {
+        double[] temperatureSeries = {6.0, 8.0, 6.0, 8.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 6.0;
+        double actualResult = seriesAnalysis.min();
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+	@Test
+    public void testMax() {
+        double[] temperatureSeries = {6.0, 8.0, 6.0, 8.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 8.0;
+        double actualResult = seriesAnalysis.max();
+        assertEquals(expResult, actualResult, 0.00001);        
     }
 	@Test(expected = IllegalArgumentException.class)
     public void testMaxFailOnEmptyList() {
