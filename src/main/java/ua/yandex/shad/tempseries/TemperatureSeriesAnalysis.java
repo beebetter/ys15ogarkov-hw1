@@ -83,14 +83,6 @@ public class TemperatureSeriesAnalysis {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		/*double minAbs = abs(tempSeries[0]);
-		double res = tempSeries[0];
-		for (int i = 1; i < curLength; i++) {
-			if (minAbs > abs(tempSeries[i]) || minAbs == tempSeries[i]) {
-				minAbs = abs(tempSeries[i]);
-				res = tempSeries[i];
-			}
-		}*/
         return findTempClosestToValue(0.0);
     }
     
@@ -111,15 +103,53 @@ public class TemperatureSeriesAnalysis {
 }
     
     public double[] findTempsLessThen(double tempValue) {
-        return null;
+		if (tempSeries.length == 0) {
+			throw new IllegalArgumentException();
+		}
+		int maxLength = 0;
+		for (int i = 1; i < curLength; i++) {
+			if (tempSeries[i] < tempValue) {
+				maxLength++;
+			}
+		}
+		double[] res = new double [maxLength];
+		int curResLength = 0;
+		for (int i = 1; i < curLength; i++) {
+			if (tempSeries[i] < tempValue) {
+				res[curResLength] = tempSeries[i];
+				curResLength++;
+			}
+		}
+        return res;
     }
     
     public double[] findTempsGreaterThen(double tempValue) {
-        return null;
+		if (tempSeries.length == 0) {
+			throw new IllegalArgumentException();
+		}
+        int maxLength = 0;
+		for (int i = 1; i < curLength; i++) {
+			if (tempSeries[i] > tempValue) {
+				maxLength++;
+			}
+		}
+		double[] res = new double [maxLength];
+		int curResLength = 0;
+		for (int i = 1; i < curLength; i++) {
+			if (tempSeries[i] < tempValue) {
+				res[curResLength] = tempSeries[i];
+				curResLength++;
+			}
+		}
+        return res;
     }
     
     public TempSummaryStatistics summaryStatistics() {
-        return null;
+		if (tempSeries.length == 0) {
+			throw new IllegalArgumentException();
+		}
+		TempSummaryStatistics res = new TempSummaryStatistics(average(), deviation(), min(), max());
+        return res;
     }
     
     public int addTemps(double ... temps) {
