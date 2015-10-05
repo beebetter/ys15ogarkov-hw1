@@ -3,17 +3,19 @@ import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 //import java.util.InputMismatchException;
-public class tempSeriesAnalysis {    
+public class TemperatureSeriesAnalysis {    
 
 	public static final int MIN_TEMPERATURE = -273;
+	
 	private double[] tempSeries;
 	private int curLength;
 	
-    public tempSeriesAnalysis() {
-        
+    public TemperatureSeriesAnalysis() {
+        tempSeries = new double [0];
+		curLength = 0;
     }
     
-    public tempSeriesAnalysis(double[] newTempSeries) {
+    public TemperatureSeriesAnalysis(double[] newTempSeries) {
         boolean withinTheRange = true;
 		for (double t : newTempSeries) {
 			if (t < MIN_TEMPERATURE) {
@@ -81,15 +83,15 @@ public class tempSeriesAnalysis {
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double minAbs = abs(tempSeries[0]);
+		/*double minAbs = abs(tempSeries[0]);
 		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
 			if (minAbs > abs(tempSeries[i]) || minAbs == tempSeries[i]) {
 				minAbs = abs(tempSeries[i]);
 				res = tempSeries[i];
 			}
-		}
-        return res;
+		}*/
+        return findTempClosestToValue(0.0);
     }
     
     public double findTempClosestToValue(double tempValue) {
