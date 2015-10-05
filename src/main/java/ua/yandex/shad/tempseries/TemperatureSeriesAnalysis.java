@@ -1,6 +1,7 @@
 package ua.yandex.shad.tempseries;
 import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
+import static java.lang.Math.abs;
 //import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
 
@@ -77,11 +78,33 @@ public class TemperatureSeriesAnalysis {
     }
     
     public double findTempClosestToZero() {
-        return 0;
+		if (temperatureSeries.length == 0) {
+			throw new IllegalArgumentException();
+		}
+		double minAbs = abs(temperatureSeries[0]);
+		double res = temperatureSeries[0];
+		for (int i = 1; i < curLength; i++) {
+			if (minAbs > abs(temperatureSeries[i]) || minAbs == temperatureSeries[i]) {
+				minAbs = abs(temperatureSeries[i]);
+				res = temperatureSeries[i];
+			}
+		}
+        return res;
     }
     
     public double findTempClosestToValue(double tempValue) {
-        return 0;
+        if (temperatureSeries.length == 0) {
+			throw new IllegalArgumentException();
+		}
+		double minAbs = abs(temperatureSeries[0] - tempValue);
+		double res = temperatureSeries[0];
+		for (int i = 1; i < curLength; i++) {
+			if (minAbs > abs(temperatureSeries[i] - tempValue) || minAbs == abs(temperatureSeries[i] - tempValue) && temperatureSeries[i] >= 0 ) {
+				minAbs = abs(temperatureSeries[i] - tempValue);
+				res = temperatureSeries[i];
+			}
+		}
+        return res;
 }
     
     public double[] findTempsLessThen(double tempValue) {
