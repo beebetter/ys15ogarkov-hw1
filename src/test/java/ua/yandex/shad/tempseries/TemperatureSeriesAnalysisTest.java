@@ -86,6 +86,15 @@ public class TemperatureSeriesAnalysisTest {
         double actualResult = seriesAnalysis.min();
         assertEquals(expResult, actualResult, 0.00001);        
     }
+
+ @Test
+    public void testMin2() {
+        double[] temperatureSeries = {50.0, 100.0, 40.0, 80.0, 50.0, 20.0, 10.0, 15.0, 16.0, -17.0, 0.0, -32.0, 11.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -32.0;
+        double actualResult = seriesAnalysis.min();
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
  
  @Test(expected = IllegalArgumentException.class)
     public void testMaxFailOnEmptyList() {
@@ -150,6 +159,14 @@ public class TemperatureSeriesAnalysisTest {
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 5.0;
         double actualResult = seriesAnalysis.findTempClosestToValue(100.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+  @Test
+    public void testFindTempClosestToValueTest4() {
+        double[] temperatureSeries = {-100.0, 120.0, -50.0, 50.0, -10.0, 30.0, 5.0, 15.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 15.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(10.0);        
         assertEquals(expResult, actualResult, 0.00001);        
     }
  
@@ -235,6 +252,11 @@ public class TemperatureSeriesAnalysisTest {
         int expResult = 2;
         int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
         assertEquals(expResult, actualResult);       
+    }
+  @Test
+    public void testTemperatureSeriesAnalysisBasicConstructor() {
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis();     
+        assertNotNull(seriesAnalysis);        
     }
  
 }
