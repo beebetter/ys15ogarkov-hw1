@@ -1,6 +1,6 @@
 package ua.yandex.shad.tempseries;
 
-import static org.junit.Assert.*;
+import org.junit.Assert.*;
 import org.junit.Test;
 import java.util.InputMismatchException;
 
@@ -190,11 +190,8 @@ public class TemperatureSeriesAnalysisTest {
     public void testSummaryStatistics() {
         double[] temperatureSeries = {6.0, 8.0, 6.0, 8.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
-        TempSummaryStatistics expResult = new TempSummaryStatistics();
-		expResult.set(7.0, 1.0, 6.0, 8.0);
         TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
-        assertTrue(expResult.avgTemp == actualResult.avgTemp && expResult.devTemp == actualResult.devTemp
-		&& expResult.minTemp == actualResult.minTemp && expResult.maxTemp == actualResult.maxTemp);       
+        assertTrue(actualResult.compare(7.0, 1.0, 6.0, 8.0));       
     }
 	
 	@Test(expected = InputMismatchException.class)
