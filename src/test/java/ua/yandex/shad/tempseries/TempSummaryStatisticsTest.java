@@ -1,6 +1,6 @@
 package ua.yandex.shad.tempseries;
 
-import org.junit.Assert.*;
+import static org.junit.Assert.*;
 import org.junit.Test;
 
 public class TempSummaryStatisticsTest {
