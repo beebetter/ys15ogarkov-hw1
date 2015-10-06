@@ -1,7 +1,7 @@
 package ua.yandex.shad.tempseries;
 import static java.lang.Math.pow;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.abs;
+import  static java.lang.Math.sqrt;
+import  static java.lang.Math.abs;
 import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
 public static final int MIN_TEMPERATURE = -273;
@@ -45,10 +45,10 @@ private int curLength;
 		}
 		double res = 0, avg = average();
 		for (int i = 0; i < curLength; i++) {
-			res += pow(tempSeries[i] - avg, 2);
+			res += Math.pow(tempSeries[i] - avg, 2);
 		}
 		res *= 1.0 / ((double) curLength);
-		res = sqrt(res);
+		res = Math.sqrt(res);
 		return res;
 	}
 	
@@ -89,10 +89,10 @@ private int curLength;
 		if (tempSeries.length == 0) {
 			throw new IllegalArgumentException();
 		}
-		double minAbs = abs(tempSeries[0] - tempValue);
+		double minAbs = Math.abs(tempSeries[0] - tempValue);
 		double res = tempSeries[0];
 		for (int i = 1; i < curLength; i++) {
-			double curAbs = abs(tempSeries[i] - tempValue);
+			double curAbs = Math.abs(tempSeries[i] - tempValue);
 			if (minAbs > curAbs 
 			|| minAbs == curAbs && tempSeries[i] >= 0) {
 				minAbs = curAbs;
@@ -154,6 +154,7 @@ private int curLength;
 	}
 	
 	public int addTemps(double ... temps) {
+		
 		return 0;
 	}
 }
