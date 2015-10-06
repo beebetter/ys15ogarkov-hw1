@@ -63,10 +63,10 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverageTest2" time="0.046"/>
-  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testMinFailOnEmptyList" time="0"/>
+  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverageTest2" time="0.042"/>
+  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testMinFailOnEmptyList" time="0.005"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testDeviationFailOnEmptyList" time="0"/>
-  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempsLessThenFailOnEmptyList" time="0.001"/>
+  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempsLessThenFailOnEmptyList" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempClosestToZeroFailOnEmptyList" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempsGreaterThenFailOnEmptyList" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempsLessThen" time="0"/>
@@ -75,11 +75,11 @@
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testDeviationTest2" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testDeviationTest3" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testTemperatureSeriesAnalysisFailWhenOutOfRange" time="0"/>
-  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverage" time="0.001"/>
+  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverage" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testSummaryStatistics" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testMaxFailOnEmptyList" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testSummaryStatisticsFailOnEmptyList" time="0"/>
-  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverageFailOnEmptyList" time="0"/>
+  <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testAverageFailOnEmptyList" time="0.001"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testDeviation" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testSummaryStatisticsExpectedFail" time="0"/>
   <testcase classname="ua.yandex.shad.tempseries.TemperatureSeriesAnalysisTest" name="testFindTempClosestToValueTest2" time="0"/>
