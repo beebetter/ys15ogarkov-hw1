@@ -1,9 +1,9 @@
 package ua.yandex.shad.tempseries;
 public class TempSummaryStatistics {
-private double avgTemp;
-private double devTemp;
-private double minTemp;
-private double maxTemp;
+ private double avgTemp;
+ private double devTemp;
+ private double minTemp;
+ private double maxTemp;
 public void set(double avgT, double devT, double minT, double maxT) {
 avgTemp = avgT;
 devTemp = devT;
