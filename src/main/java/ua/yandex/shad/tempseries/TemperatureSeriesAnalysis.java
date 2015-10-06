@@ -1,6 +1,7 @@
 package ua.yandex.shad.tempseries;
 import java.util.InputMismatchException;
-public class TemperatureSeriesAnalysis {    
+public class TemperatureSeriesAnalysis {
+    
 public static final int MIN_TEMPERATURE = -273;
 private double[] tempSeries;
 private int curLength;
@@ -10,20 +11,14 @@ private int curLength;
         curLength = 0;
     }
     public TemperatureSeriesAnalysis(double[] newTempSeries) {
-        boolean withinTheRange = true;
         for (double t : newTempSeries) {
             if (t < MIN_TEMPERATURE) {
-                withinTheRange = false;
+                throw new InputMismatchException();
             }
         }
-        if (withinTheRange) {
-            tempSeries = (double[]) newTempSeries.clone();
-            curLength = tempSeries.length;
-        }
-        else {
-            throw new InputMismatchException();
-        }
-        }
+        tempSeries = (double[]) newTempSeries.clone();
+        curLength = tempSeries.length;
+    }
         
     public double average() {   
         if (tempSeries.length == 0) {
@@ -151,7 +146,17 @@ private int curLength;
     }
     
     public int addTemps(double ... temps) {
-        
-        return 0;
+        while (temps.length + curLength > tempSeries.length) {
+            double [] biggerTempSeries = new double[tempSeries.length * 2];
+            for (int i = 0; i < curLength; i++) {
+                biggerTempSeries[i] = tempSeries[i];
+            }
+            tempSeries = biggerTempSeries;
+        }
+        for (int i = 0; i < temps.length; i++) {
+            tempSeries[i+curLength] = temps[i];
+            }
+        curLength += temps.length;
+        return curLength;
     }
 }

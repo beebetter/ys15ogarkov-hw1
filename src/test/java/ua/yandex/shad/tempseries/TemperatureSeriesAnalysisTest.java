@@ -5,8 +5,14 @@ import org.junit.Test;
 import java.util.InputMismatchException;
 
 public class TemperatureSeriesAnalysisTest {
+
+  @Test(expected = InputMismatchException.class)
+    public void testTemperatureSeriesAnalysisFailWhenOutOfRange() {
+        double[] temperatureSeries = {0.0, -274.0, -272.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);        
+    }
     
-    @Test
+  @Test
     public void testAverage() {
         double[] temperatureSeries = {1.0, -5.0, -1.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
@@ -201,11 +207,34 @@ public class TemperatureSeriesAnalysisTest {
         TempSummaryStatistics actualResult = seriesAnalysis.summaryStatistics();
         assertFalse(actualResult.compare(7.0, 2.0, 6.0, 8.0));       
     }
- 
- @Test(expected = InputMismatchException.class)
-    public void testTemperatureSeriesAnalysisFailWhenOutOfRange() {
-        double[] temperatureSeries = {0.0, -274.0, -272.0};
-        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);        
+
+ @Test
+    public void testaddTemps() {
+        double[] temperatureSeries = {1.0, 2.0, 3.0};
+		double[] addTemperatureSeries = {4.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expResult = 5;
+        int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
+        assertEquals(expResult, actualResult);       
     }
-    
+ @Test
+    public void testaddTempsNewArrayFarBigger() {
+        double[] temperatureSeries = {1.0, 2.0};
+		double[] addTemperatureSeries = {3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expResult = 9;
+        int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
+        assertEquals(expResult, actualResult);       
+    }
+ 
+ @Test
+    public void testaddTempsAddArrayEmpty() {
+        double[] temperatureSeries = {1.0, 2.0};
+		double[] addTemperatureSeries = {};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        int expResult = 2;
+        int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
+        assertEquals(expResult, actualResult);       
+    }
+ 
 }
