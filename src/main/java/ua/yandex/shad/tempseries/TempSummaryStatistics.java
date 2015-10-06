@@ -11,12 +11,19 @@ public class TempSummaryStatistics {
 		minTemp = minT;
 		maxTemp = maxT;
 	}
+<<<<<<< HEAD
 	public boolean compare(
 	double avgT, double devT, double minT, double maxT) {
 		if (avgTemp == avgT && devTemp == devT
 		&& minTemp == minT && maxTemp == maxT) {
 			return true;	
 		}
+=======
+	public boolean compare(double avgT, double devT, double minT, double maxT) {
+		if (avgTemp == avgT && devTemp == devT
+		&& minTemp == minT && maxTemp == maxT)
+			return true;
+>>>>>>> origin/master
 		return false;
 	}
 }
