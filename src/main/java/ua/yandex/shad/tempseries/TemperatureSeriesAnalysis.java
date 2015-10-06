@@ -1,6 +1,4 @@
 package ua.yandex.shad.tempseries;
-import static java.lang.Math.sqrt;
-import static java.lang.Math.abs;
 import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
 public static final int MIN_TEMPERATURE = -273;
