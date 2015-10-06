@@ -1,4 +1,5 @@
 package ua.yandex.shad.tempseries;
+import static java.lang.Math.pow;
 import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 import java.util.InputMismatchException;
