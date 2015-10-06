@@ -1,5 +1,5 @@
 package ua.yandex.shad.tempseries;
-import java.lang.Math.sqrt;
+import static java.lang.Math.sqrt;
 import static java.lang.Math.abs;
 import java.util.InputMismatchException;
 public class TemperatureSeriesAnalysis {    
