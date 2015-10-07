@@ -16,4 +16,16 @@ public class TempSummaryStatisticsTest {
         example.set(1.0, 2.0, 3.0, 4.0);       
         assertFalse(example.compare(1.0, 3.0, 2.0, 4.0));        
     }
+    @Test
+    public void testCompareFailWhenDifferent2() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(1.0, 2.0, 2.0, 4.0));        
+    }
+    @Test
+    public void testCompareFailWhenDifferent3() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(5.0, 2.0, 2.0, 4.0));        
+    }
 }
