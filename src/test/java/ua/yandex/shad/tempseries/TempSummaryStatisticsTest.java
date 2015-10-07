@@ -28,4 +28,28 @@ public class TempSummaryStatisticsTest {
         example.set(1.0, 2.0, 3.0, 4.0);       
         assertFalse(example.compare(5.0, 2.0, 2.0, 4.0));        
     }
+    @Test
+    public void testCompareFailWhenDifferent4_1() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(5.0, 2.0, 3.0, 4.0));        
+    }
+    @Test
+    public void testCompareFailWhenDifferent4_2() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(1.0, 5.0, 3.0, 4.0));        
+    }
+    @Test
+    public void testCompareFailWhenDifferent4_3() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(1.0, 2.0, 5.0, 4.0));        
+    }
+    @Test
+    public void testCompareFailWhenDifferent4_4() {
+        TempSummaryStatistics example = new TempSummaryStatistics();
+        example.set(1.0, 2.0, 3.0, 4.0);       
+        assertFalse(example.compare(1.0, 2.0, 3.0, 5.0));        
+    }
 }
