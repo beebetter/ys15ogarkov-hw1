@@ -94,6 +94,15 @@ private int curLength;
         return res;
     }
 
+    private boolean checkIfAddToRes(double curValue,
+    double tempValue, boolean chooseSmaller) {
+        if (chooseSmaller && curValue < tempValue
+        || !chooseSmaller && curValue > tempValue) {
+            return true;
+        }
+        return false;
+    }
+    
     private double[] findTempsLessOrGreaterThen(
     double tempValue, boolean chooseSmaller) {
         if (tempSeries.length == 0) {
@@ -101,16 +110,14 @@ private int curLength;
         }
         int maxLength = 0;
         for (int i = 0; i < curLength; i++) {
-            if (chooseSmaller && tempSeries[i] < tempValue
-            || !chooseSmaller && tempSeries[i] > tempValue) {
+            if (checkIfAddToRes(tempSeries[i], tempValue, chooseSmaller)) {
                 maxLength++;
             }
         }
         double[] res = new double [maxLength];
         int curResLength = 0;
         for (int i = 0; i < curLength; i++) {
-            if (chooseSmaller && tempSeries[i] < tempValue
-            || !chooseSmaller && tempSeries[i] > tempValue) {
+            if (checkIfAddToRes(tempSeries[i], tempValue, chooseSmaller)) {
                 res[curResLength] = tempSeries[i];
                 curResLength++;
             }
