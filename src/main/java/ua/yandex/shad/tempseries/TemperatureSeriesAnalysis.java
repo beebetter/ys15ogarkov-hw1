@@ -86,7 +86,7 @@ private int curLength;
         for (int i = 1; i < curLength; i++) {
             double curAbs = Math.abs(tempSeries[i] - tempValue);
             if (minAbs > curAbs 
-            || minAbs == curAbs && tempSeries[i] >= 0) {
+            || minAbs == curAbs && tempSeries[i] > res) {
                 minAbs = curAbs;
                 res = tempSeries[i];
             }

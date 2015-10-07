@@ -162,11 +162,19 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);        
     }
   @Test
-    public void testFindTempClosestToValueTest4() {
+    public void testFindTempClosestToValueTest4_1() {
         double[] temperatureSeries = {-100.0, 120.0, -50.0, 50.0, -10.0, 30.0, 5.0, 15.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         double expResult = 15.0;
         double actualResult = seriesAnalysis.findTempClosestToValue(10.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+  @Test
+    public void testFindTempClosestToValueTest4_2() {
+        double[] temperatureSeries = {-120.0, 100.0, -70.0, 30.0, -30.0, 10.0, -15.0, -5.0, 5.0, 15.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -5.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(-10.0);        
         assertEquals(expResult, actualResult, 0.00001);        
     }
  
@@ -228,7 +236,7 @@ public class TemperatureSeriesAnalysisTest {
  @Test
     public void testaddTemps() {
         double[] temperatureSeries = {1.0, 2.0, 3.0};
-		double[] addTemperatureSeries = {4.0, 5.0};
+        double[] addTemperatureSeries = {4.0, 5.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         int expResult = 5;
         int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
@@ -237,7 +245,7 @@ public class TemperatureSeriesAnalysisTest {
  @Test
     public void testaddTempsNewArrayFarBigger() {
         double[] temperatureSeries = {1.0, 2.0};
-		double[] addTemperatureSeries = {3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
+        double[] addTemperatureSeries = {3.0, 4.0, 5.0, 6.0, 7.0, 8.0, 9.0};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         int expResult = 9;
         int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
@@ -247,7 +255,7 @@ public class TemperatureSeriesAnalysisTest {
  @Test
     public void testaddTempsAddArrayEmpty() {
         double[] temperatureSeries = {1.0, 2.0};
-		double[] addTemperatureSeries = {};
+        double[] addTemperatureSeries = {};
         TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
         int expResult = 2;
         int actualResult = seriesAnalysis.addTemps(addTemperatureSeries);
