@@ -94,14 +94,15 @@ private int curLength;
         return res;
     }
 
-    private double[] findTempsLessOrGreaterThen(double tempValue, boolean chooseSmaller) {
+    private double[] findTempsLessOrGreaterThen(
+    double tempValue, boolean chooseSmaller) {
         if (tempSeries.length == 0) {
             throw new IllegalArgumentException();
         }
         int maxLength = 0;
         for (int i = 0; i < curLength; i++) {
             if (chooseSmaller && tempSeries[i] < tempValue
-			|| !chooseSmaller && tempSeries[i] > tempValue) {
+            || !chooseSmaller && tempSeries[i] > tempValue) {
                 maxLength++;
             }
         }
@@ -109,7 +110,7 @@ private int curLength;
         int curResLength = 0;
         for (int i = 0; i < curLength; i++) {
             if (chooseSmaller && tempSeries[i] < tempValue
-			|| !chooseSmaller && tempSeries[i] > tempValue) {
+            || !chooseSmaller && tempSeries[i] > tempValue) {
                 res[curResLength] = tempSeries[i];
                 curResLength++;
             }
@@ -118,11 +119,11 @@ private int curLength;
     }
     
     public double[] findTempsLessThen(double tempValue) {
-        return findTempsLessOrGreaterThen(tempValue, true) ;
+        return findTempsLessOrGreaterThen(tempValue, true);
     }
     
     public double[] findTempsGreaterThen(double tempValue) {
-        return findTempsLessOrGreaterThen(tempValue, false) ;
+        return findTempsLessOrGreaterThen(tempValue, false);
     }
     
     public TempSummaryStatistics summaryStatistics() {
