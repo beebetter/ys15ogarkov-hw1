@@ -223,7 +223,51 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);        
     }
  
- 
+  @Test
+    public void testFindTempClosestToValueTest6_1() {
+        double[] temperatureSeries = {-120.0, -70.0, -30.0, -15.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -120.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(-120.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+  @Test
+    public void testFindTempClosestToValueTest6_2() {
+        double[] temperatureSeries = {-120.0, -70.0, -30.0, -15.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = -15.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(-15.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+  @Test
+    public void testFindTempClosestToValueTest7_1() {
+        double[] temperatureSeries = {10.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 10.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(-100.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+  @Test
+    public void testFindTempClosestToValueTest7_2() {
+        double[] temperatureSeries = {10.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 10.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(100.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+  @Test
+    public void testFindTempClosestToValueTest7_3() {
+        double[] temperatureSeries = {10.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 10.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(10.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
  @Test(expected = IllegalArgumentException.class)
     public void testFindTempsLessThenFailOnEmptyList() {
         double[] temperatureSeries = {};
