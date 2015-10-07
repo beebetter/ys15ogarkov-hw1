@@ -93,21 +93,23 @@ private int curLength;
         }
         return res;
     }
-    
-    public double[] findTempsLessThen(double tempValue) {
+
+    private double[] findTempsLessOrGreaterThen(double tempValue, boolean chooseSmaller) {
         if (tempSeries.length == 0) {
             throw new IllegalArgumentException();
         }
         int maxLength = 0;
         for (int i = 0; i < curLength; i++) {
-            if (tempSeries[i] < tempValue) {
+            if (chooseSmaller && tempSeries[i] < tempValue
+			|| !chooseSmaller && tempSeries[i] > tempValue) {
                 maxLength++;
             }
         }
         double[] res = new double [maxLength];
         int curResLength = 0;
         for (int i = 0; i < curLength; i++) {
-            if (tempSeries[i] < tempValue) {
+            if (chooseSmaller && tempSeries[i] < tempValue
+			|| !chooseSmaller && tempSeries[i] > tempValue) {
                 res[curResLength] = tempSeries[i];
                 curResLength++;
             }
@@ -115,25 +117,12 @@ private int curLength;
         return res;
     }
     
+    public double[] findTempsLessThen(double tempValue) {
+        return findTempsLessOrGreaterThen(tempValue, true) ;
+    }
+    
     public double[] findTempsGreaterThen(double tempValue) {
-        if (tempSeries.length == 0) {
-            throw new IllegalArgumentException();
-        }
-        int maxLength = 0;
-        for (int i = 0; i < curLength; i++) {
-            if (tempSeries[i] > tempValue) {
-                maxLength++;
-            }
-        }
-        double[] res = new double [maxLength];
-        int curResLength = 0;
-        for (int i = 0; i < curLength; i++) {
-            if (tempSeries[i] > tempValue) {
-                res[curResLength] = tempSeries[i];
-                curResLength++;
-            }
-        }
-        return res;
+        return findTempsLessOrGreaterThen(tempValue, false) ;
     }
     
     public TempSummaryStatistics summaryStatistics() {
