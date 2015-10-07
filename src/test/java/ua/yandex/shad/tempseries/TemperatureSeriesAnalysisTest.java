@@ -268,6 +268,24 @@ public class TemperatureSeriesAnalysisTest {
         assertEquals(expResult, actualResult, 0.00001);        
     }
 
+  @Test
+    public void testFindTempClosestToValueTest8_1() {
+        double[] temperatureSeries = {5.0, 15.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 15.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(10.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
+  @Test
+    public void testFindTempClosestToValueTest8_2() {
+        double[] temperatureSeries = {-5.0, 5.0};
+        TemperatureSeriesAnalysis seriesAnalysis = new TemperatureSeriesAnalysis(temperatureSeries);
+        double expResult = 5.0;
+        double actualResult = seriesAnalysis.findTempClosestToValue(0.0);        
+        assertEquals(expResult, actualResult, 0.00001);        
+    }
+
  @Test(expected = IllegalArgumentException.class)
     public void testFindTempsLessThenFailOnEmptyList() {
         double[] temperatureSeries = {};
